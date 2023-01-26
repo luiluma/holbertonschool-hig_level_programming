@@ -7,7 +7,7 @@ lastDigit = number % 10
 #else:
     #lastDigit = number % 10
 
-print(f"las digit of {number} is {lastDigit} and is", end=" ")
+print(f"last digit of {number} is {lastDigit} and is", end=" ")
 
 if lastDigit > 5:
     print("greater than 5")
