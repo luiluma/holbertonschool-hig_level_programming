@@ -7,7 +7,6 @@ class Square():
     def __init__(self, size=0):
         """ Definition with private instance attribute size
         which is assigned with the double underscore before given name"""
-        
 
         self.__size = size
         if type(size) is not int:
