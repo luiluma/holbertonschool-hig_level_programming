@@ -16,6 +16,7 @@ class Base:
         else:
             Base.__nb_objects += 1
             self.id = Base.__nb_objects
+
     @staticmethod
     def to_json_string(list_dictionaries):
         """ to JSON definition """
@@ -25,7 +26,7 @@ class Base:
 
     @classmethod
     def save_to_file(cls, list_objs):
-        """ writes the JSON string representatios to a file, definition """
+        """ writes the JSON string representations to a file, definition """
         empty_list = []
         filename = cls.__name__ + ".json"
         if list_objs is not None:
