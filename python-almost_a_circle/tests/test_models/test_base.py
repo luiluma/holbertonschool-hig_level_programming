@@ -1,60 +1,44 @@
 #!/usr/bin/python3
-""" test base script """
+"""
+    Module test for base class
+"""
+
+
 import unittest
 from models.base import Base
 
 
 class TestBase(unittest.TestCase):
-    """ class to test , Base """
+    """Test class for Base class"""
 
-    def setUp(self):
-        """ This is called immediately before calling the test method """
-        Base._Base__nb_objects = 0
+    base_1 = Base()
+    base_2 = Base()
+    base_89 = Base(89)
 
-    def test_zero(self):
-        """ test"""
-        base = Base(0)
-        self.assertEqual(base.id, 0)
+    def test_base_create(self):
+        self.assertEqual(self.base_1._Base__nb_objects, 2)
+        self.assertEqual(self.base_1.id, 1)
 
-    def test_integer(self):
-        """ test"""
-        base = Base(18)
-        self.assertEqual(base.id, 18)
+    def test_base_update_id(self):
+        self.assertEqual(self.base_2._Base__nb_objects, 2)
+        self.assertEqual(self.base_2.id, 2)
 
-    def test_negative(self):
-        """ test """
-        base = Base(-8)
-        self.assertEqual(base.id, -8)
+    def test_base_id(self):
+        self.assertEqual(self.base_89._Base__nb_objects, 2)
+        self.assertEqual(self.base_89.id, 89)
 
-    def test_string(self):
-        """ test """
-        base = Base("string")
-        self.assertEqual(base.id, "string")
+    def test_base_to_json_string_void(self):
+        self.assertEqual(Base.to_json_string(None), "[]")
+
+    def test_base_to_json_string_full(self):
+        self.assertEqual(Base.to_json_string([{'id':12}]), '[{"id": 12}]')
+
+    def test_base_from_json_string_void(self):
+        self.assertEqual(Base.from_json_string(None), [])
+
+    def test_base_from_json_string_full(self):
+        self.assertEqual(Base.from_json_string('[{"id": 89}]'), [{'id': 89}])
 
 
-    def test_none(self):
-        """ test """
-        base = Base(None)
-        self.assertEqual(base.id, 1)
-
-    def test_dictionary(self):
-        """ test """
-        base = Base({"hello": "World"})
-        self.assertEqual(base.id, {"hello": "World"})
-
-    def test_float(self):
-        """ test """
-        base = Base(5.3)
-        self.assertEqual(base.id, 5.3)
-
-    def test_list(self):
-        """ test """
-        base = Base([1, 2, 3])
-        self.assertEqual(base.id, [1, 2, 3])
-
-    def test_test(self):
-        """ test """
-        base1 = Base()
-        base2 = Base()
-        self.assertEqual(base1.id, 1)
-        self.assertEqual(base2.id, 2)
+if __name__ == '__main__':
+    unittest.main()
