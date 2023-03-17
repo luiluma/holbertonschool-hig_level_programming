@@ -1,7 +1,9 @@
--- Read user
+-- script that creates the table force_name on your MySQL server
 
-CREATE DATABASE IF NOT EXISTS hbtn_0d_2;
+-- id and name
 
-CREATE USER IF NOT EXISTS 'user_0d_2'@'localhost' IDENTIFIED BY 'user_0d_2_pwd';
+CREATE TABLE IF NOT EXISTS force_name(
 
-GRANT SELECT ON hbtn_0d_2.* TO 'user_0d_2'@'localhost';
+	id INT
+	name VARCHAR(256)NOT NULL
+);
